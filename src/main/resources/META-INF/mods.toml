@@ -1,0 +1,14 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+#issueTrackerURL="http://my.issue.tracker/" #optional
+[[mods]]
+modId="thepast"
+version="${file.jarVersion}"
+displayName="The Past"
+authors="Bastion14, PhilGreyTheThird"
+#updateJSONURL=""
+#displayURL=""
+#logoFile=""
+description='''
+A mod about exploring minecraft's past. 
+'''
