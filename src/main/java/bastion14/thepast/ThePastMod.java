@@ -3,15 +3,13 @@ package bastion14.thepast;
 import bastion14.thepast.config.ThePastConfiguration;
 import bastion14.thepast.dim.ThePastDimension;
 import bastion14.thepast.dim.ThePastDimensions;
-import bastion14.thepast.entities.PhantomAliveEntity;
 import bastion14.thepast.entities.ThePastEntities;
 import bastion14.thepast.entities.render.PhantomAliveRenderer;
 import bastion14.thepast.item.ThePastItems;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -21,10 +19,9 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.Random;
 
 @Mod(ThePastMod.MODID)
 public class ThePastMod {
@@ -60,6 +57,9 @@ public class ThePastMod {
                     Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                     (type, world, reason, pos, rand) -> reason != SpawnReason.NATURAL || world.getDimension() instanceof ThePastDimension
             );
+            for(Biome biome : ForgeRegistries.BIOMES) {
+                biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(ThePastEntities.PHANTOM_ALIVE.get(), 1, 3, 5));
+            }
         }
     }
 

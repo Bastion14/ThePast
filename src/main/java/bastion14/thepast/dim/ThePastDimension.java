@@ -1,7 +1,6 @@
 package bastion14.thepast.dim;
 
 import mcp.MethodsReturnNonnullByDefault;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
@@ -11,10 +10,7 @@ import net.minecraft.world.biome.provider.OverworldBiomeProvider;
 import net.minecraft.world.biome.provider.OverworldBiomeProviderSettings;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.dimension.EndDimension;
-import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.OverworldChunkGenerator;
 import net.minecraft.world.gen.OverworldGenSettings;
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +32,7 @@ public class ThePastDimension extends Dimension {
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
         OverworldBiomeProviderSettings settings = new OverworldBiomeProviderSettings(world.getWorldInfo());
+        OverworldGenSettings genSettings = new OverworldGenSettings();
         return new OverworldChunkGenerator(world, new OverworldBiomeProvider(settings), new OverworldGenSettings());
     }
 
